@@ -18,7 +18,6 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_element_next_can_be_assigned_to
-    skip
     first  = Element.new(1)
     second = Element.new(2)
     first.next = second
@@ -26,14 +25,12 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_list_push
-    skip
     list = SimpleLinkedList.new
     element = Element.new(1)
-    assert_equal list, list.push(element)
+    assert_equal element, list.push(element)
   end
 
   def test_list_pop
-    skip
     list = SimpleLinkedList.new
     element = Element.new(1)
     list.push(element)
