@@ -8,13 +8,11 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_element_can_hold_a_different_value
-    skip
     element = Element.new(10)
     assert_equal 10, element.datum
   end
 
   def test_element_next
-    skip
     element = Element.new(1)
     assert_nil element.next
   end

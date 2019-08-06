@@ -6,4 +6,8 @@ class Element
   def datum
     @number
   end
+
+  def next
+    nil
+  end
 end
