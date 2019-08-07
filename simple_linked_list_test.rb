@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require 'pry'
 require_relative 'simple_linked_list'
 
+# These are the tests for the exercism.io Simple Linked List exercise.
 class LinkedListTest < Minitest::Test
   def test_element
     element = Element.new(1)

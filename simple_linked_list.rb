@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Element class
 class Element
   attr_reader :datum
   attr_accessor :next
@@ -8,6 +11,7 @@ class Element
   end
 end
 
+# Simple Linked List class
 class SimpleLinkedList
   def initialize(passed_in_array = nil)
     @head = nil
@@ -15,17 +19,50 @@ class SimpleLinkedList
     assign_passed_in_array_values(passed_in_array) if passed_in_array
   end
 
-  def assign_passed_in_array_values(passed_in_array)
-    passed_in_array.each do |number|
-      element = Element.new(number)
-      push(element)
-    end
-  end
-
   def push(element)
     return assign_head(element) if @head.nil?
 
     assign_next(element) unless @head.nil?
+  end
+
+  def pop
+    return @head if @head.nil?
+
+    return pop_head if @head.next.nil?
+
+    return pop_head_next if @head.next.next.nil?
+
+    pop_head_next_next
+  end
+
+  def to_a
+    @array.reverse
+  end
+
+  def reverse!
+    return reverse_head unless @array.empty?
+
+    return self if @array.empty?
+  end
+
+  private
+
+  def pop_head
+    pop_value = @head
+    @head = nil
+    pop_value
+  end
+
+  def pop_head_next
+    pop_value = @head.next
+    @head.next = nil
+    pop_value
+  end
+
+  def pop_head_next_next
+    pop_value = @head.next.next
+    @head.next.next = nil
+    pop_value
   end
 
   def assign_head(element)
@@ -49,36 +86,6 @@ class SimpleLinkedList
     self
   end
 
-  def pop
-    return @head if @head.nil?
-
-    if @head.next.nil?
-      pop_value = @head
-      @head = nil
-      return pop_value
-    end
-
-    if @head.next.next.nil?
-      pop_value = @head.next
-      @head.next = nil
-      return pop_value
-    end
-
-    pop_value = @head.next.next
-    @head.next.next = nil
-    pop_value
-  end
-
-  def to_a
-    @array.reverse
-  end
-
-  def reverse!
-    return reverse_head unless @array.empty?
-
-    return self if @array.empty?
-  end
-
   def reverse_head
     unless @head.next.next
       @head.next.next = @head
@@ -87,5 +94,12 @@ class SimpleLinkedList
     end
 
     @array
+  end
+
+  def assign_passed_in_array_values(passed_in_array)
+    passed_in_array.each do |number|
+      element = Element.new(number)
+      push(element)
+    end
   end
 end
