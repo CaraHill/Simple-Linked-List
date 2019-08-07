@@ -28,8 +28,17 @@ class SimpleLinkedList
   end
 
   def assign_next(element)
-    @head.next = element
-    @array << @head.next.datum
+    if @head.next.nil?
+      @head.next = element
+      @array << @head.next.datum
+      return self
+    end
+
+    unless @head.next.nil?
+      @head.next.next = element
+      @array << @head.next.next.datum
+    end
+
     self
   end
 
@@ -42,6 +51,6 @@ class SimpleLinkedList
   end
 
   def to_a
-    @array
+    @array.reverse
   end
 end

@@ -64,7 +64,6 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_list_multiple_to_array
-    skip
     list = SimpleLinkedList.new
     first = Element.new(1)
     second = Element.new(2)
