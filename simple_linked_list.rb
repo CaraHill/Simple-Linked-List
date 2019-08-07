@@ -52,12 +52,40 @@ class SimpleLinkedList
   def pop
     return @head if @head.nil?
 
-    return @head if @head.next.nil?
+    if @head.next.nil?
+      pop_value = @head
+      @head = nil
+      return pop_value
+    end
 
-    @head.next
+    if @head.next.next.nil?
+      pop_value = @head.next
+      @head.next = nil
+      return pop_value
+    end
+
+    pop_value = @head.next.next
+    @head.next.next = nil
+    pop_value
   end
 
   def to_a
     @array.reverse
+  end
+
+  def reverse!
+    return reverse_head unless @array.empty?
+
+    return self if @array.empty?
+  end
+
+  def reverse_head
+    unless @head.next.next
+      @head.next.next = @head
+      @head = @head.next
+      @head.next.next = nil
+    end
+
+    @array
   end
 end
