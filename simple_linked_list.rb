@@ -9,17 +9,23 @@ class Element
 end
 
 class SimpleLinkedList
-  attr_accessor :head
-
   def initialise
     @head = nil
+    @tail = nil
+    @array = []
   end
 
   def push(element)
-    @head = element
+    @head = element if @head.nil?
+
+    @tail = element unless @head.nil?
+
+    self
   end
 
   def pop
-    @head
+    return @head if @tail.nil?
+
+    @tail
   end
 end
