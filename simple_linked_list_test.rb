@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'pry'
 require_relative 'simple_linked_list'
 
 class LinkedListTest < Minitest::Test
@@ -51,13 +52,11 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_list_empty_to_array
-    skip
     list = SimpleLinkedList.new
     assert_equal [], list.to_a
   end
 
   def test_list_single_to_array
-    skip
     list = SimpleLinkedList.new
     first = Element.new(1)
     list.push(first)
