@@ -9,10 +9,17 @@ class Element
 end
 
 class SimpleLinkedList
-  def initialize
+  def initialize(passed_in_array = nil)
     @head = nil
-    @tail = nil
     @array = []
+    assign_passed_in_array_values(passed_in_array) if passed_in_array
+  end
+
+  def assign_passed_in_array_values(passed_in_array)
+    passed_in_array.each do |number|
+      element = Element.new(number)
+      push(element)
+    end
   end
 
   def push(element)
