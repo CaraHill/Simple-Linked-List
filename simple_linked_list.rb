@@ -34,14 +34,12 @@ class SimpleLinkedList
   end
 
   def to_a
-    temp_array = []
-    temp_array << pop until @head.nil?
+    temp_array = create_temp_array
     temp_array.map(&:datum)
   end
 
   def reverse!
-    temp_array = []
-    temp_array << pop until @head.nil?
+    temp_array = create_temp_array
     assign_passed_in_array_values(temp_array)
     self
   end
@@ -53,5 +51,11 @@ class SimpleLinkedList
       push(Element.new(element)) if element.is_a?(Integer)
       push(element) if element.is_a?(Element)
     end
+  end
+
+  def create_temp_array
+    temp_array = []
+    temp_array << pop until @head.nil?
+    temp_array
   end
 end
