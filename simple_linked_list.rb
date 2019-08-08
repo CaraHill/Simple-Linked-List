@@ -15,16 +15,12 @@ end
 class SimpleLinkedList
   def initialize(passed_in_array = [])
     @head = nil
-    @array = []
     assign_passed_in_array_values(passed_in_array)
   end
 
   def push(element)
     element.next = @head unless @head.nil?
     @head = element
-
-    @array << @head.datum
-
     self
   end
 
@@ -38,11 +34,12 @@ class SimpleLinkedList
   end
 
   def to_a
-    @array.reverse
+    temp_array = []
+    temp_array << pop until @head.nil?
+    temp_array.map(&:datum)
   end
 
   def reverse!
-    @array = []
     temp_array = []
     temp_array << pop until @head.nil?
     assign_passed_in_array_values(temp_array)
