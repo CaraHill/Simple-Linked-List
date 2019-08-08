@@ -34,13 +34,11 @@ class SimpleLinkedList
   end
 
   def to_a
-    temp_array = create_temp_array
-    temp_array.map(&:datum)
+    create_temp_array.map(&:datum)
   end
 
   def reverse!
-    temp_array = create_temp_array
-    assign_passed_in_array_values(temp_array)
+    assign_passed_in_array_values(create_temp_array)
     self
   end
 
